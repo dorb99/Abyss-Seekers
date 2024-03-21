@@ -685,18 +685,21 @@ namespace Assets
         //retrun a list of all heros
         public List<Hero> AllHeros()
         {
-            List<Hero> heros = new List<Hero>();
+            List<Hero> heroes = new List<Hero>();
             try
             {
-                string query = "SELECT * FROM hero";
+                string query = "SELECT * FROM hero LIMIT 4";
                 OpenConnection();
                 using (var command = new SqliteCommand(query, DBConnection))
                 {
                     using (var reader = command.ExecuteReader())
                     {
-                        foreach (Hero item in reader)
+                        while (reader.Read())
                         {
-                            heros.Add(item);
+                            string name = reader["Name"].ToString();
+                            Hero hero = GetHero(name);
+                            heroes.Add(hero);
+                            Debug.Log(hero.Name);
                         }
                     }
                 }
@@ -704,7 +707,7 @@ namespace Assets
             }
             catch (Exception ex)
             {
-                Debug.LogError("Error: " + ex.Message);
+                Debug.LogError("Error retrieving heroes: " + ex.Message);
             }
             finally
             {
@@ -713,7 +716,7 @@ namespace Assets
                     DBConnection.Close();
                 }
             }
-            return heros;
+            return heroes;
         }
 
         //deliting a hero

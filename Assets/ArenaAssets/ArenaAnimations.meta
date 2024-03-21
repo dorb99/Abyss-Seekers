@@ -1,7 +1,12 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/ArenaAssets/ArenaAnimations.meta
 guid: 406fa22753192984faab74853fadcada
 folderAsset: yes
 DefaultImporter:
+========
+guid: ea14c308028988c4ca7abac2654788f2
+PrefabImporter:
+>>>>>>>> 9363cd07d53726db13604fa36c8264f52e846300:Assets/Prefabs/GameContainerPrefab 1.prefab.meta
   externalObjects: {}
   userData: 
   assetBundleName: 
