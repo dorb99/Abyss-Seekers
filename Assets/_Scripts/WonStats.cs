@@ -45,7 +45,6 @@ public class WonStats : MonoBehaviour
             int randomCoins = (int)loot["Coins"];
             int randomXp = (int)loot["TotalXp"];
             bool raisedLevelAmount = (bool)loot["RaisedLevel"];
-            Debug.Log(raisedLevelAmount);
             if (raisedLevelAmount) {
                 choiceLeft = 3;
                 clickCount = 0;

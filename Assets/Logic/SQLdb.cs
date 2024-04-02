@@ -6,13 +6,18 @@ using System.Data;
 using System.IO;
 using System.Linq;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using Unity.VisualScripting;
+using UnityEngine.UI;
+using System.Text;
+using static LoadGameScene;
 
 
 namespace Assets
 {
     public class SQLdb 
     {
-        private static string connectionString = "URI=file:Assets/Logic/DB/realDBCopy.db";
+        private static string connectionString = "URI=file:Assets/Logic/DB/realDB.db";
         public static SqliteConnection DBConnection;
         private static string FilePath = "Assets/Logic/DB/Default_JSON.json";
 
@@ -53,7 +58,6 @@ namespace Assets
                             }
                         }
                     }
-                    Debug.Log($"finished updating data");
                 }
                 DBConnection.Close();
             }
@@ -491,9 +495,9 @@ namespace Assets
             }
             return weapons;
         }
-        public List<Enemy> GetAllEnemies()
+        public static List<Enemy> GetAllEnemies()
         {
-            List<Enemy> enemies = new();
+            List<Enemy> enemiesHolder = new();
             try
             {
                 string query = "SELECT * FROM Enemies";
@@ -520,7 +524,7 @@ namespace Assets
                             // Create a new Enemy object with the retrieved data
                             Enemy enemy = new(name, worth, maxHealth, damage, healthRegeneration, hitRate, evadeRate,
                                              armour, movementSpeed, criticalChance, armourPenetration);
-                            enemies.Add(enemy);
+                            enemiesHolder.Add(enemy);
                         }
                     }
                 }
@@ -536,7 +540,7 @@ namespace Assets
                     DBConnection.Close();
                 }
             }
-            return enemies;
+            return enemiesHolder;
         }
         public static List<Bodyarmour> GetAllBodyArmours()
         {

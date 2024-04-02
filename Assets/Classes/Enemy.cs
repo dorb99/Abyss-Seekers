@@ -37,5 +37,10 @@ namespace Assets
                 CriticalChance = criticalChance;
                 ArmourPenetration = armourPenetration;
             }
+
+        public static explicit operator Enemy(List<Enemy> v)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

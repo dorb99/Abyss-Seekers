@@ -122,14 +122,13 @@ public class LoadGameScene : MonoBehaviour
             }
         }
 
-        createNewGameButton.gameObject.SetActive(savedGames.Count < 5);
+        //createNewGameButton.gameObject.SetActive(savedGames.Count < 5);
     }
 
     public void StartGame(string heroName)
     {
         try
         {
-            Debug.Log("Starting game for player: " + heroName);
             MainMenu.currentHero = DBManager.GetHero(heroName);
             //Inv.RenderValues();
             print(MainMenu.currentHero.Role);
@@ -144,12 +143,9 @@ public class LoadGameScene : MonoBehaviour
 
     public void DeleteGame(int index)
     {
-        Debug.Log("Attempting to delete game at index: " + index);
-        Debug.Log("Number of saved games before deletion: " + savedGames.Count);
 
         if (index >= 0 && index < savedGames.Count)
         {
-            Debug.Log("Deleting game for player: " + savedGames[index].playerName);
 
             string playerName = savedGames[index].playerName;
             DBManager.DeleteHero(playerName);

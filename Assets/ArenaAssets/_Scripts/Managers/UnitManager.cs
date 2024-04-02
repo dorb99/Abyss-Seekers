@@ -285,8 +285,6 @@ public class UnitManager : MonoBehaviour
             double armorAfterPenetration = StatsDef.Armour * (1 - armourPenetration);
             dmgTaken -= armorAfterPenetration;
         }
-        Debug.Log("dmg taken " + dmgTaken);
-        Debug.Log("dmg is " + StatsAtc.Dmg);
         if(dmgTaken < 0)
         {
             dmgTaken = 0;

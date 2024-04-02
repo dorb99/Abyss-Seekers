@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Common;
+using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -55,7 +56,7 @@ namespace Assets
         }
         public List<Enemy> SpawnEnemies()
         {
-            List<Enemy> enemyList = DBManager.GetAllEnemies();
+            List<Enemy> enemyList = SQLdb.GetAllEnemies();
             System.Random rand = new System.Random();
             try
             {
@@ -79,6 +80,7 @@ namespace Assets
                 return null;
             }
         }
+
         public int TotalArmour()
         {
            return Stats.Armour + Inventory.SumAdditionalArmour();
